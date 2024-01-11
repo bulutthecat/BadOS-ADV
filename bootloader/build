@@ -1,9 +1,18 @@
 #!/bin/bash
 
+asm_file="bootloader.asm"
+
+if [ -n "$1" ]; then
+  asm_file="$1"
+fi
+
+output_file="out/os.img"
+
 mkdir -p out
-nasm -f bin bootloader.asm -o out/os.img
+nasm -f bin "$asm_file" -o "$output_file"
+
 read -p "Do you want to run the compiled bootloader? [Y/n] " choice
 
 if [[ -z "$choice" || $choice =~ ^[Yy]$ ]]; then
-  qemu-system-i386 -drive format=raw,file=out/os.img
+  qemu-system-i386 -drive format=raw,file="$output_file"
 fi
