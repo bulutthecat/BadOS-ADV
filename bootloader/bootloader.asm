@@ -11,19 +11,6 @@ start:
     mov ds, ax
     mov es, ax
 
-    ; Print a message to the screen (optional)
-    mov ah, 0x0E ; BIOS teletype function
-    mov al, 'H'
-    int 0x10
-    mov al, 'e'
-    int 0x10
-    mov al, 'l'
-    int 0x10
-    mov al, 'l'
-    int 0x10
-    mov al, 'o'
-    int 0x10
-
     ; Load the operating system kernel into memory
     mov ah, 0x02 ; BIOS read function
     mov al, 1    ; Number of sectors to read
