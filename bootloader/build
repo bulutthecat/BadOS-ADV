@@ -1,0 +1,9 @@
+#!/bin/bash
+
+mkdir -p out
+nasm -f bin bootloader.asm -o out/os.img
+read -p "Do you want to run the compiled bootloader? [Y/n] " choice
+
+if [[ -z "$choice" || $choice =~ ^[Yy]$ ]]; then
+  qemu-system-i386 -drive format=raw,file=out/os.img
+fi
