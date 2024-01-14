@@ -1,0 +1,1 @@
+make sure to install DD, NASM and QEMU before running build.bat
